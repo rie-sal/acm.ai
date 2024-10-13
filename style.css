@@ -1,0 +1,305 @@
+:root {
+  --background-color: #f5f2f0;
+  --text-color: #333;
+}
+@font-face {
+  font-family: 'Courier Sans';
+  src: url('fonts/Courier\ Prime\ Sans.ttf');
+}
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  letter-spacing: 1pt;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* color: var(--text-color); */
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  letter-spacing: 2pt;
+  z-index: 1000;
+}
+
+.dark-mode header {
+  background-color: rgba(23, 23, 23, 0.2);;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 10px;
+  font-size: 15pt;
+}
+
+p {
+  letter-spacing: 0pt;
+}
+menu {
+  display: flex;
+  text-align: right;
+  align-items: center;
+  padding-left: 10px;
+  background: linear-gradient(to left, #8D54FF, #28a0b0); /* Apply gradient */
+  -webkit-background-clip: text; /* Clip the background to the text */
+  background-clip: text; /* For non-WebKit browsers */
+}
+
+menu a {
+  margin: 0 15px;
+  color: transparent; /* Make text color transparent */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.toggle-switch {
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  border: 2px solid #333;
+  background-color: transparent;
+  position: relative; /* inner circle positioning */
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 10px;
+  display: inline-flex; /* align w other inline elements */
+  vertical-align: middle; /* vertical alignment */
+}
+
+.toggle-switch.active {
+  border-color: var(--text-color);
+}
+
+.toggle-inner {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--text-color);
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  transition: left 0.4s;
+}
+
+.toggle-switch.active .toggle-inner {
+  left: calc(100% - 27px);
+}
+
+nav a {
+  margin: 0 15px;
+  /* color: var(--text-color); */
+  text-decoration: none;
+}
+
+section {
+  min-height: 100vh;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#landing {
+  letter-spacing: 1pt;
+}
+
+h1, h2 {
+  color: var(--text-color);
+  text-align: center;
+  font-size: 34pt;
+}
+
+#about {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Aligns content to the bottom */
+  align-items: center;
+  min-height: 100vh;
+  padding: 50px 20px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center;
+  flex-grow: 1; /* Allows it to take up available space */
+}
+
+.about-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Adjust spacing between icons */
+  color: var(--text-color);
+  filter: invert(0%);
+  transition: filter 0.3s;
+}
+
+.dark-mode .about-icons img {
+  filter: invert(100%); /* Inverts the colors for dark mode */
+}
+
+#iframes-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+iframe {
+  display: block;
+  margin: 0 auto;
+}
+
+#team {
+  text-align: center;
+  padding: 50px 20px;
+  margin-bottom: 10vh; 
+}
+
+.team-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  width: 250px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  /* transition: transform 0.3s; */
+}
+
+/* .team-card:hover {
+  transform: scale(1.05);
+} */
+
+.headshot {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card-content {
+  padding: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.bio-overlay {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  display: flex;
+  flex-direction: column; /* Stack bio text and icons vertically */
+  justify-content: space-between; /* Distribute space between items */
+  align-items: center; /* Center items horizontally */
+  text-align: center;
+  border-radius: 15px;
+  padding: 20px;
+  z-index: 2;
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.3s; /* Smooth transition */
+}
+
+.team-card:hover .bio-overlay {
+  opacity: 1; /* Show on hover */
+}
+
+.bio {
+  flex: 1; /* Allow bio text to take available space */
+  display: flex;
+  justify-content: center; /* Center bio text horizontally */
+  align-items: center; /* Center bio text vertically */
+}
+
+/* Separate class for icons in the bio overlay */
+.bio-overlay .about-icons {
+  display: flex;
+  justify-content: center; /* Center icons horizontally */
+  margin-top: auto; /* Push icons to the bottom */
+}
+
+.about-icons a {
+  margin: 0 5px; /* Add space between icons */
+}
+
+/* Styles for other about-icons if needed (outside of team cards) */
+.about-icons-outside {
+  display: flex;
+  justify-content: center; /* Center icons horizontally */
+  margin: 20px 0; /* Adjust margin as needed */
+}
+
+.about-icons-outside a {
+  margin: 0 5px; /* Add space between icons */
+}
+
+.dark-mode .bio-overlay{
+  background: rgba(23, 23, 23, 0.2);
+}
+
+.team-card:hover .bio-overlay {
+  display: flex;
+}
+
+footer {
+  background-image: linear-gradient(to left, #8D54FF, #28a0b0);
+   /* rgba(114, 111, 191, 1); */
+  
+  padding: 10px;
+  color: var(--background-color);
+  /* txst red#451012 */ 
+}
+
+.footer-icon a {
+  display: inline-block; /* Ensure icons are inline */
+  margin: 5px; /* Space between icons */
+  text-decoration: none; /* Remove underline from links */
+  filter: invert(100%);
+  transition: filter 0.3s;
+}
+
+.footer-icon img {
+  display: block; /* Prevent any extra space below the image */
+  width: 50px; /* Set a consistent width */
+  height: 50px; /* Set a consistent height */
+  color: var(--text-color);
+  filter: invert(0%);
+}
+
+.dark-mode .footer-icon img {
+  filter: invert(100%); /* Inverts the colors for dark mode */
+}
+
+
+.dark-mode {
+  --background-color: #1a1a1a;
+  --text-color: #f5f2f0;
+  --footer-background: #000000;
+}

@@ -1,0 +1,5 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 240 240" enable-background="new 0 0 512 512" xml:space="preserve">
+  <g transform="translate(110, 115) scale(1) translate(-121, -121)">
+    <path fill="black" d="M128,10C62.8,10,10,62.8,10,128c0,65.2,52.8,118,118,118c65.2,0,118-52.8,118-118C246,62.8,193.2,10,128,10z M150.8,68.9l39.1,67.7h-45.5l-39.1-67.7H150.8L150.8,68.9z M59.7,147.7l39-67.6l22.7,39.4l-39,67.7L59.7,147.7z M173.5,187.1H98.2l22.7-39.4h75.3L173.5,187.1z"/>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+
+calendar inspo
+	https://mir-s3-cdn-cf.behance.net/project_modules/disp/76bf6320971529.562f42e122a50.png
+
+to-do:
+	- mobile adaptation
+	- add officer info
+	- add social links
+	- add past officer pages
+	- route discord bot to email
+	- detect discord bot dates to add to calendar
+	- 
+
+
+	- adapt heading to screen size (text)
+	- make officer card content fit the cards nicely
+	- 
+
+	- join our mailing list 
+	- download the calendar

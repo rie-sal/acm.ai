@@ -1,0 +1,434 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:AIM 2024/25
+X-WR-TIMEZONE:America/New_York
+X-WR-CALDESC:AIM Events
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART:20240830T180000Z
+DTEND:20240830T210000Z
+DTSTAMP:20241023T195203Z
+UID:0ul8rq2uv1h79kp3hbuvsh84df@google.com
+CREATED:20240830T183428Z
+DESCRIPTION:Come find us at booth 44! Click for Interest Form.\n[https://do
+ cs.google.com/forms/d/e/1FAIpQLSeSSlRP4hqdO423hkhaWOrPJdG4E9rsTF83wigyLImUR
+ dVkjg/viewform]
+LAST-MODIFIED:20240830T210450Z
+LOCATION:Johnson Ice Rink
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Activity Midway [AIM!]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240912T220000Z
+DTEND:20240912T230000Z
+DTSTAMP:20241023T195203Z
+UID:1pj2bbes0b646djpbh9ab86gnb@google.com
+CREATED:20240905T190730Z
+DESCRIPTION:Open to anyone! Learn about what Labs has to offer and how to p
+ articipate.
+LAST-MODIFIED:20240905T201005Z
+LOCATION:4-370
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Labs Demo Day [Labs!]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240912T230000Z
+DTEND:20240912T231500Z
+DTSTAMP:20241023T195203Z
+UID:53k4gbtodlqiejgs3p7h5m5qaf@google.com
+CREATED:20240905T200833Z
+DESCRIPTION:Applications to join any of AI@MIT's initiatives opens after De
+ mo Day.
+LAST-MODIFIED:20240905T201117Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Application Release [AIM]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240909T220000Z
+DTEND:20240909T230000Z
+DTSTAMP:20241023T195203Z
+UID:2p5iv4natqpvpnh6omvkc6na2f@google.com
+CREATED:20240905T190632Z
+DESCRIPTION:Open to anyone! Come to learn more about AI@MIT and what to exp
+ ect from the upcoming week.
+LAST-MODIFIED:20240905T201342Z
+LOCATION:4-370
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Intro Meeting + Networking [AIM!]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240910T220000Z
+DTEND:20240910T230000Z
+DTSTAMP:20241023T195203Z
+UID:2jc8t7mppota3et0cag0u0uo2b@google.com
+CREATED:20240905T190707Z
+DESCRIPTION:Open to anyone! Stop by to learn how to participate and what to
+  expect.
+LAST-MODIFIED:20240905T201404Z
+LOCATION:4-370
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Sample Workshop [Workshops!]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240801T160000Z
+DTEND:20240801T163000Z
+DTSTAMP:20241023T195203Z
+UID:7si2kko0h6s9tguo524r3eq9rd@google.com
+CREATED:20240830T195509Z
+DESCRIPTION:Example description.<br><br><br><br>Learn about AI@MIT here: <a
+  href="https://www.ai-at-mit.com/">https://www.ai-at-mit.com/</a>
+LAST-MODIFIED:20240907T160312Z
+LOCATION:123
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Calendar Start Event [Permeate]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240801T160000Z
+DTEND:20240801T163000Z
+DTSTAMP:20241023T195203Z
+UID:20t94sk2q71ain2pnq24e78ld0@google.com
+CREATED:20240907T160318Z
+DESCRIPTION:Example description.<br><br><br><br>Learn about AI@MIT here: <a
+  href="https://www.google.com/url?q=https://www.ai-at-mit.com/&amp\;sa=D&am
+ p\;source=calendar&amp\;usd=2&amp\;usg=AOvVaw3SXKaW4PFPKupQjcqarjq-" target
+ ="_blank">https://www.ai-at-mit.com/</a>
+LAST-MODIFIED:20240907T160318Z
+LOCATION:123
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Calendar Start Event [Workshops]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240801T160000Z
+DTEND:20240801T163000Z
+DTSTAMP:20241023T195203Z
+UID:7vn34vtatbui4666eqkgtsu9fc@google.com
+CREATED:20240907T160324Z
+DESCRIPTION:Example description.<br><br><br><br>Learn about AI@MIT here: <a
+  href="https://www.google.com/url?q=https://www.ai-at-mit.com/&amp\;sa=D&am
+ p\;source=calendar&amp\;usd=2&amp\;usg=AOvVaw3SXKaW4PFPKupQjcqarjq-" target
+ ="_blank">https://www.ai-at-mit.com/</a>
+LAST-MODIFIED:20240907T160324Z
+LOCATION:123
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Calendar Start Event [Labs]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240801T160000Z
+DTEND:20240801T163000Z
+DTSTAMP:20241023T195203Z
+UID:6bdoduj0nm9td1gcsk488bd6qc@google.com
+CREATED:20240907T160339Z
+DESCRIPTION:Example description.<br><br><br><br>Learn about AI@MIT here: <a
+  href="https://www.google.com/url?q=https://www.ai-at-mit.com/&amp\;sa=D&am
+ p\;source=calendar&amp\;usd=2&amp\;usg=AOvVaw3SXKaW4PFPKupQjcqarjq-" target
+ ="_blank">https://www.ai-at-mit.com/</a>
+LAST-MODIFIED:20240907T160339Z
+LOCATION:123
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Calendar Start Event [Speakers]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240801T160000Z
+DTEND:20240801T163000Z
+DTSTAMP:20241023T195203Z
+UID:12vhpt74q230iftk5qiter8cmf@google.com
+CREATED:20240907T160348Z
+DESCRIPTION:Example description.<br><br><br><br>Learn about AI@MIT here: <a
+  href="https://www.google.com/url?q=https://www.ai-at-mit.com/&amp\;sa=D&am
+ p\;source=calendar&amp\;usd=2&amp\;usg=AOvVaw3SXKaW4PFPKupQjcqarjq-" target
+ ="_blank">https://www.ai-at-mit.com/</a>
+LAST-MODIFIED:20240907T160348Z
+LOCATION:123
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Calendar Start Event [Generator]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240801T160000Z
+DTEND:20240801T163000Z
+DTSTAMP:20241023T195203Z
+UID:1il88smq656dg386jipo37pv2u@google.com
+CREATED:20240907T160355Z
+DESCRIPTION:Example description.<br><br><br><br>Learn about AI@MIT here: <a
+  href="https://www.google.com/url?q=https://www.ai-at-mit.com/&amp\;sa=D&am
+ p\;source=calendar&amp\;usd=2&amp\;usg=AOvVaw3SXKaW4PFPKupQjcqarjq-" target
+ ="_blank">https://www.ai-at-mit.com/</a>
+LAST-MODIFIED:20240907T160412Z
+LOCATION:123
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Calendar Start Event [AIM!]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240801T160000Z
+DTEND:20240801T163000Z
+DTSTAMP:20241023T195203Z
+UID:1g7uvjibqgo4vv09ebi6cjuhnk@google.com
+CREATED:20240907T160424Z
+LAST-MODIFIED:20240907T160435Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Calendar Start Event
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240915T035900Z
+DTEND:20240915T040000Z
+DTSTAMP:20241023T195203Z
+UID:3neipf4brd3aa49bbps2j669tr@google.com
+CREATED:20240913T012415Z
+DESCRIPTION:Application due to join the fall 2024 cohort. See the applicati
+ on <a href="https://docs.google.com/forms/d/e/1FAIpQLSfhnTzjO9owaUHXdqiNfKh
+ UAQoafiB7jD_t1I_HoZHUpVTpfA/viewform">here</a>.
+LAST-MODIFIED:20240913T012415Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Labs Application Due [Labs!]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240915T035900Z
+DTEND:20240915T040000Z
+DTSTAMP:20241023T195203Z
+UID:24c39hpts6mf0j669qe8dl95jg@google.com
+CREATED:20240913T012508Z
+DESCRIPTION:Application due to join the reading group for fall 2024. See th
+ e application <a href="https://forms.gle/HidjbnWwFMxB7WbF7" target="_blank"
+ >here</a>.
+LAST-MODIFIED:20240913T012508Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Reading Group Application Due [Reading!]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240915T035900Z
+DTEND:20240915T040000Z
+DTSTAMP:20241023T195203Z
+UID:6okoqp0rtfvk2nfanuhl0vtlhq@google.com
+CREATED:20240913T012604Z
+DESCRIPTION:Application due to participate in Permeate for the fall of 2024
+ . See the application <a href="https://forms.gle/ooCJd6ELJuS3XTAe9" target=
+ "_blank">here</a>.
+LAST-MODIFIED:20240913T012943Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Permeate Application Due [Permeate!]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20240917T180000
+DTEND;TZID=America/New_York:20240917T191500
+RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20241211T045959Z;BYDAY=TU
+DTSTAMP:20241023T195203Z
+UID:6sp9s2m2rqpselaae31ndicucc@google.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/ubz-zcao-sto
+CREATED:20240908T223224Z
+DESCRIPTION:We'll either discuss a new paper or have its author present. Ch
+ eck emails/slack for more updates.\n\nJoin with Google Meet: https://meet.g
+ oogle.com/ubz-zcao-sto\nOr dial: (US) +1 401-903-3471 PIN: 262489907#\n\nLe
+ arn more about Meet at: https://support.google.com/a/users/answer/9282720
+LAST-MODIFIED:20240917T143903Z
+LOCATION:56-167
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Reading Group Weekly Meeting [Reading]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20240917T180000
+DTEND;TZID=America/New_York:20240917T191500
+DTSTAMP:20241023T195203Z
+UID:6sp9s2m2rqpselaae31ndicucc@google.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/ubz-zcao-sto
+RECURRENCE-ID;TZID=America/New_York:20240917T180000
+CREATED:20240908T223224Z
+DESCRIPTION:We'll either discuss a new paper or have its author present. Ch
+ eck emails/slack for more updates. Apply to join once the application is re
+ leased.\n\nJoin with Google Meet: https://meet.google.com/ubz-zcao-sto\nOr 
+ dial: (US) +1 401-903-3471 PIN: 262489907#\n\nLearn more about Meet at: htt
+ ps://support.google.com/a/users/answer/9282720
+LAST-MODIFIED:20240917T143903Z
+LOCATION:56-167
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First Reading Group Meeting [Reading!]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20240924T180000
+DTEND;TZID=America/New_York:20240924T191500
+DTSTAMP:20241023T195203Z
+UID:6sp9s2m2rqpselaae31ndicucc@google.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/ubz-zcao-sto
+RECURRENCE-ID;TZID=America/New_York:20240924T180000
+CREATED:20240908T223224Z
+DESCRIPTION:We'll either discuss a new paper or have its author present. Ch
+ eck emails/slack for more updates.\n\nJoin with Google Meet: https://meet.g
+ oogle.com/ubz-zcao-sto\nOr dial: (US) +1 401-903-3471 PIN: 262489907#\n\nLe
+ arn more about Meet at: https://support.google.com/a/users/answer/9282720
+LAST-MODIFIED:20240917T143903Z
+LOCATION:56-167
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Reading Group Weekly Meeting [Reading]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20241029T180000
+DTEND;TZID=America/New_York:20241029T191500
+DTSTAMP:20241023T195203Z
+UID:6sp9s2m2rqpselaae31ndicucc@google.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/ubz-zcao-sto
+RECURRENCE-ID;TZID=America/New_York:20241029T180000
+CREATED:20240908T223224Z
+DESCRIPTION:We'll either discuss a new paper or have its author present. Ch
+ eck emails/slack for more updates.\n\nJoin with Google Meet: https://meet.g
+ oogle.com/ubz-zcao-sto\nOr dial: (US) +1 401-903-3471 PIN: 262489907#\n\nLe
+ arn more about Meet at: https://support.google.com/a/users/answer/9282720
+LAST-MODIFIED:20240917T143903Z
+LOCATION:56-167
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Reading Group Weekly Meeting [Reading]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20241112T190000
+DTEND;TZID=America/New_York:20241112T200000
+DTSTAMP:20241023T195203Z
+UID:6sp9s2m2rqpselaae31ndicucc@google.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/ubz-zcao-sto
+RECURRENCE-ID;TZID=America/New_York:20241112T180000
+CREATED:20240908T223224Z
+DESCRIPTION:We'll either discuss a new paper or have its author present. Ch
+ eck emails/slack for more updates.\n\nJoin with Google Meet: https://meet.g
+ oogle.com/ubz-zcao-sto\nOr dial: (US) +1 401-903-3471 PIN: 262489907#\n\nLe
+ arn more about Meet at: https://support.google.com/a/users/answer/9282720
+LAST-MODIFIED:20240917T143903Z
+LOCATION:56-167
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Reading Group Weekly Meeting [Reading]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240925T200000Z
+DTEND:20240925T210000Z
+DTSTAMP:20241023T195203Z
+UID:7rh7hclqh2cc1digr75i5k4mi5@google.com
+CREATED:20240907T030446Z
+DESCRIPTION:OpenAI x AI@MIT Fireside Chat \nRSVP Link: https://jobs.ashbyhq
+ .com/openai/event/mit-fireside-chat-fall2024
+LAST-MODIFIED:20240917T205221Z
+LOCATION:32-124
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:OpenAI Fireside Chat [AIM!]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240921T190000Z
+DTEND:20240921T200000Z
+DTSTAMP:20241023T195203Z
+UID:26e1okm2ccgtkcidgr0rtmic9m@google.com
+CREATED:20240917T195659Z
+DESCRIPTION:<blockquote><b>Phonic Tech Talk</b><br><b>Saturday\, September 
+ 22nd at 4PM in Room 3-270</b>At Phonic\, we are training <b>audio foundatio
+ n models from scratch on petabytes of data</b> that enables our users to go
+  from <b>any prompt to any audio</b>. We believe that you should never have
+  to record audio ever again. If you could describe a voice\, edit the emoti
+ on with a prompt and add in background music\, you could instantly create t
+ he audio for a commercial. We are a team of experts from MIT\, Stanford\, a
+ nd CMU working on cutting-edge diffusion model research and ML infrastructu
+ re scaling challenges to unlock new generative capabilities that are a step
+  beyond what is possible today.<b>We will be visiting MIT from Thursday\, S
+ eptember 19th to Sunday\, September 22nd</b> for coffee chats and accelerat
+ ed interviews for roles spanning ML Research and Software Engineering. We h
+ ave limited spots for both internships and full-time positions\, so if you'
+ re interested\, <a target="_blank" href="https://forms.gle/hdUcN6A4WATbw68D
+ 7">please upload your resume here</a> for a coffee chat! We are looking for
+  people who can learn quickly rather than people with years of experience\,
+  so please don't hesitate to apply.We hope to see everyone at <b>our talk a
+ t 4PM on the 22nd in Room 3-270! </b>There will be boba and we will raffle 
+ off a $250 Amazon gift card to a lucky attendee.Our TL\;DR for now: we are 
+ training large-scale audio foundation models on internet-scale data. This i
+ s a hard machine learning research and a hard machine learning systems prob
+ lem. If you think you might enjoy that\, then you should <a target="_blank"
+  href="https://forms.gle/hdUcN6A4WATbw68D7">apply</a>.</blockquote>
+LAST-MODIFIED:20240918T172217Z
+LOCATION:3-270
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Phonic Tech Talk [AIM] 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240924T230000Z
+DTEND:20240925T010000Z
+DTSTAMP:20241023T195203Z
+UID:12t78i08lv0gd2gr51pahfuie9@google.com
+CREATED:20240907T030412Z
+DESCRIPTION:<p>Join Cerebras for a workshop covering the latest in AI infer
+ ence and compute hardware. Food\, free compute\, and prizes provided.</p><p
+ >RSVP here: <a href="https://lu.ma/u308isd1" target="_blank"><u>https://lu.
+ ma/u308isd1</u></a></p>
+LAST-MODIFIED:20240922T204236Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Build Night w Cerebras [AIM]
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20241008T200000Z
+DTEND:20241008T210000Z
+DTSTAMP:20241023T195203Z
+UID:01l71boot2elofnv6s9mkmejp8@google.com
+CREATED:20241001T185520Z
+LAST-MODIFIED:20241001T185520Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Robust Intelligence
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

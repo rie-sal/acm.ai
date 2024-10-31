@@ -6,6 +6,7 @@
   font-family: 'Courier Sans';
   src: url('fonts/Courier\ Prime\ Sans.ttf');
 }
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
@@ -17,6 +18,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 10px;
 }
 
 header {
@@ -33,7 +35,19 @@ header {
 }
 
 .dark-mode header {
-  background-color: rgba(23, 23, 23, 0.2);;
+  background-color: rgba(23, 23, 23, 0.2);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+.header-container {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: auto;
+  padding-right: 50px;
+  padding-top: 50px; 
 }
 
 nav {
@@ -47,19 +61,19 @@ nav {
 p {
   letter-spacing: 0pt;
 }
+
 menu {
   display: flex;
   text-align: right;
   align-items: center;
-  padding-left: 10px;
-  background: linear-gradient(to left, #8D54FF, #28a0b0); /* Apply gradient */
-  -webkit-background-clip: text; /* Clip the background to the text */
-  background-clip: text; /* For non-WebKit browsers */
+  background: linear-gradient(to left, #8D54FF, #42BFCB);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 menu a {
   margin: 0 15px;
-  color: transparent; /* Make text color transparent */
+  color: transparent;
   text-decoration: none;
   font-weight: bold;
 }
@@ -107,25 +121,109 @@ nav a {
 section {
   min-height: 100vh;
   flex-direction: column;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  /*justify-content: flex-end; */
+  width: 100%;  
 }
 
 #landing {
+  position: relative; 
   letter-spacing: 1pt;
+  z-index: 1; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  text-align: center;
 }
 
-h1, h2 {
+landingtext {
+  letter-spacing: 3pt;
+  font-size: 50pt;
+  display: flex;
+
+  align-items: center;
+  padding-left: 10px;
+  padding-top: 50px;
+  background: linear-gradient(to left, #8D54FF, #42BFCB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin: 0 15px;
+  color: transparent;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+h1 {
+  z-index: 10;
+  color: var(--text-color);
+  font-size: 34pt;
+  display: flex;
+  text-align: right;
+  margin: 0;        
+  position: relative; 
+  top: 75px; 
+}
+
+#landing svg {
+  position: absolute;
+  top: -110%;
+  left: -85%;
+  width: 235%;
+  height: 235%;
+  z-index: -1;
+}
+
+#svgBackground {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 150vw;
+  height: 150vh;
+  /* height: 150vh;*/
+  z-index: -5;
+}
+
+#innerCircle{
+  fill:#ffffff;
+  fill-opacity:1;
+  fill-rule:nonzero;
+}
+svg #rotatingGroup #innerCircle {
+    fill: var(--background-color);
+    /* -webkit-filter: ; */
+}
+
+svg .dark-mode #rotatingGroup #innerCircle {
+  
+  /*filter: invert(100%); */
+  filter: invert(1);
+}
+
+
+
+/*.inner-circle {
+  color: var(--text-color);
+  filter: invert(0%);
+}
+
+.dark-mode .inner-circle {
+  filter: invert(100%);
+  fill: #000000;
+} */
+
+h2 {
   color: var(--text-color);
   text-align: center;
   font-size: 34pt;
+  z-index: 10;
 }
 
 #about {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Aligns content to the bottom */
+  justify-content: flex-end;
   align-items: center;
   min-height: 100vh;
   padding: 50px 20px;
@@ -134,34 +232,111 @@ h1, h2 {
 .about-content {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center content vertically */
+  justify-content: center;
   align-items: center;
-  flex-grow: 1; /* Allows it to take up available space */
+  flex-grow: 1;
 }
 
 .about-icons {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Adjust spacing between icons */
+  gap: 15px;
   color: var(--text-color);
   filter: invert(0%);
   transition: filter 0.3s;
 }
 
 .dark-mode .about-icons img {
-  filter: invert(100%); /* Inverts the colors for dark mode */
+  filter: invert(100%);
 }
 
-#iframes-container {
+.message-card {
+  /* border: 1px solid #ccc; */
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-card h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.message-card p {
+  margin: 8px 0;
+}
+
+.message-card small {
+  color: #666;
+  font-size: 0.9em; 
+}
+
+.calendar-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.calendar-header {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 10px;
+}
+
+.day-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.day-cell {
+  position: relative;
+  height: 50px;
+  width: 50px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  justify-content: center;
+  cursor: pointer;
 }
 
-iframe {
-  display: block;
-  margin: 0 auto;
+.day-cell .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #8D54FF; 
+  position: absolute;
+  bottom: 5px;
+}
+
+.event-list {
+  margin-top: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.event-card {
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 #team {
@@ -178,7 +353,7 @@ iframe {
 }
 
 .team-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--background-color);
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   margin: 20px;
@@ -186,24 +361,30 @@ iframe {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  /* transition: transform 0.3s; */
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 250px); /* Maintain overall card height */
 }
-
-/* .team-card:hover {
-  transform: scale(1.05);
-} */
 
 .headshot {
   width: 100%;
-  height: auto;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  height: auto; /* Let height adjust based on width */
+  position: absolute; /* Position the image absolutely */
+  top: 0; /* Align to the top of the card */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, 0); /* Adjust for exact centering */
+  z-index: 0; /* Send to the back */
+  object-fit: cover; /* Crop the image to fit the card */
+  min-height: 50%; /* Ensure it takes half the card height */
 }
 
 .card-content {
-  padding: 15px;
   position: relative;
-  z-index: 1;
+  z-index: 1; /* Keep the content above the image */
+  padding: 15px; /* Space inside the content area */
+  margin-top: auto; /* Push it to the bottom of the card */
+  text-align: center; /* Center align text */
+  background: var(--background-color);/* Semi-transparent background for contrast */
 }
 
 .bio-overlay {
@@ -216,48 +397,46 @@ iframe {
   right: 0; 
   bottom: 0; 
   display: flex;
-  flex-direction: column; /* Stack bio text and icons vertically */
-  justify-content: space-between; /* Distribute space between items */
-  align-items: center; /* Center items horizontally */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
   border-radius: 15px;
   padding: 20px;
   z-index: 2;
-  opacity: 0; /* Start hidden */
-  transition: opacity 0.3s; /* Smooth transition */
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .team-card:hover .bio-overlay {
-  opacity: 1; /* Show on hover */
+  opacity: 1;
 }
 
 .bio {
-  flex: 1; /* Allow bio text to take available space */
+  flex: 1;
   display: flex;
-  justify-content: center; /* Center bio text horizontally */
-  align-items: center; /* Center bio text vertically */
+  justify-content: center;
+  align-items: center;
 }
 
-/* Separate class for icons in the bio overlay */
 .bio-overlay .about-icons {
   display: flex;
-  justify-content: center; /* Center icons horizontally */
-  margin-top: auto; /* Push icons to the bottom */
+  justify-content: center;
+  margin-top: auto;
 }
 
 .about-icons a {
-  margin: 0 5px; /* Add space between icons */
+  margin: 0 5px;
 }
 
-/* Styles for other about-icons if needed (outside of team cards) */
 .about-icons-outside {
   display: flex;
-  justify-content: center; /* Center icons horizontally */
-  margin: 20px 0; /* Adjust margin as needed */
+  justify-content: center;
+  margin: 20px 0;
 }
 
 .about-icons-outside a {
-  margin: 0 5px; /* Add space between icons */
+  margin: 0 5px; 
 }
 
 .dark-mode .bio-overlay{
@@ -278,23 +457,23 @@ footer {
 }
 
 .footer-icon a {
-  display: inline-block; /* Ensure icons are inline */
-  margin: 5px; /* Space between icons */
-  text-decoration: none; /* Remove underline from links */
+  display: inline-block;
+  margin: 5px;
+  text-decoration: none;
   filter: invert(100%);
   transition: filter 0.3s;
 }
 
 .footer-icon img {
-  display: block; /* Prevent any extra space below the image */
-  width: 50px; /* Set a consistent width */
-  height: 50px; /* Set a consistent height */
-  color: var(--text-color);
+  display: block;
+  width: 50px;
+  height: 50px;
+  color: var(--background-color);
   filter: invert(0%);
 }
 
 .dark-mode .footer-icon img {
-  filter: invert(100%); /* Inverts the colors for dark mode */
+  filter: invert(100%);
 }
 
 

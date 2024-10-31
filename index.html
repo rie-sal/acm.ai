@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ACM AI at TXST</title>
-  <link rel="icon" href="/images/acm_favicon.jpg" type="image/png">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js"></script>
 </head>
 
 <body>
@@ -26,8 +27,57 @@
     </nav>
   </header>
 
-  <section id="landing">
-    <h1>ACM AI at TXST</h1>
+ <section id="landing">
+    <svg
+      id="svgBackground"
+      viewBox="0 0 210 297"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:svg="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="linearGradient16">
+          <stop style="stop-color:#5ddee6;stop-opacity:1;" offset="0" />
+          <stop style="stop-color:#8b56ff;stop-opacity:1;" offset="1" />
+        </linearGradient>
+        <linearGradient id="linearGradient13">
+          <stop style="stop-color:#5ddee6;stop-opacity:1;" offset="0" />
+          <stop style="stop-color:#8b56ff;stop-opacity:1;" offset="1" />
+        </linearGradient>
+        <linearGradient xlink:href="#linearGradient13" id="linearGradient14" x1="110.08016" y1="68.892952" x2="111.10674" y2="69.919533" gradientUnits="userSpaceOnUse" gradientTransform="matrix(91,-91.810412,91.810412,91.810412,-16421.114,3961.7961)" />
+        <linearGradient xlink:href="#linearGradient16" id="linearGradient15" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-92.810412,91.810412,-91.810412,-91.810412,16630.528,-3566.7368)" x1="110.08019" y1="68.892952" x2="111.10677" y2="69.919533" />
+      </defs>
+      <g id="rotatingGroup" transform="translate(105, 197)"> <!-- Translate to the center for rotation -->
+        <g id="rotatingShapes">
+          <path style="fill:url(#linearGradient14);" d="m -92.084194,0 91.729804,91.7298 91.85452,-91.85453 z" />
+          <path style="fill:url(#linearGradient15);fill-rule:nonzero" d="m 91.854536,0 -91.72981,-91.7298 -91.854532,91.85453 z" /> 
+        </g>
+        <circle id="innerCircle" cx="0" cy="0" r="49.624805" /> <!-- Keep the circle centered -->
+      </g>
+    </svg>
+  
+    <script>
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const rotationDegree = scrollTop / 10;
+        const scaleFactor = Math.max(0.5, 1 - scrollTop / 1000);
+    
+        const svgElement = document.getElementById('rotatingGroup');
+        svgElement.setAttribute('transform', `translate(105, 197) rotate(${rotationDegree})`);
+    
+        const innerCircle = document.getElementById('innerCircle');
+        innerCircle.setAttribute('transform', `scale(${scaleFactor})`);
+      });
+    </script>
+  
+
+  
+    <div class="header-container">
+      <landingtext>acm ai</landingtext>
+      <br>
+      <h1>at</h1>
+      <br>
+      <landingtext>txst</landingtext>
+    </div>
   </section>
 
 <section id="about">
@@ -45,22 +95,50 @@
       <a href="https://www.instagram.com/acm.txst/" target="_blank">
         <img src="images/instagram_icon.svg" alt="instagram link icon" height="50" width="50"/>
       </a>
-      <a href="mailto:mojavelighthouse@gmail.com" target="_blank">
+      <a href="mailto:acmaitxstate@gmail.com" target="_blank">
         <img src="images/email_icon.svg" alt="email link icon" height="50" width="50"/>
       </a>
+      <!--
       <a href="https://drive.google.com" target="_blank">
         <img src="images/drive_icon.svg" alt="google drive link icon" height="50" width="50"/>
       </a>
+    -->
     </div>
   </div>
 </section>
 
-  <section id="events">
-    <h2>Events</h2>
-    <div class="iframe-container">
-      <iframe src="https://calendar.google.com/calendar/embed?src=bea3c558d615d9630b391ba92fabb971797e17114d92bbd6330111ebf1d8c8d8%40group.calendar.google.com&ctz=America%2FChicago" style="border: 0" width="400" height="300" frameborder="0" scrolling="no"></iframe>
+<section id="announcements">
+  <h2>Announcements</h2>
+  <ul id="messageList"></ul>
+  <div id="messagesContainer"></div>
+</section>
+
+
+<section id="events">
+  <h2>Events</h2>
+  
+  <div class="calendar-card">
+    <div class="calendar-header">
+      <h3 id="month-year"></h3> <!-- Display the current month and year -->
     </div>
-  </section>
+    
+    <div class="calendar-grid">
+      <!-- Day headers for the calendar -->
+      <div class="day-header">Sun</div>
+      <div class="day-header">Mon</div>
+      <div class="day-header">Tue</div>
+      <div class="day-header">Wed</div>
+      <div class="day-header">Thu</div>
+      <div class="day-header">Fri</div>
+      <div class="day-header">Sat</div>
+      <!-- Grid cells for each day will be generated dynamically by JS -->
+    </div>
+  </div>
+
+  <div class="event-list" id="event-list">
+    <!-- Scrollable event cards will be populated dynamically here -->
+  </div>
+</section>
 
   <section id="team">
     <h2>Our Team</h2>
@@ -69,7 +147,7 @@
       <div class="team-card">
         <img src="images/mason_photo.png" alt="mason's photo" class="headshot">
         <div class="card-content">
-          <h3>Mason</h3>
+          <h3>Mason Melead</h3>
           <p>President</p>
         </div>
         <div class="bio-overlay">
@@ -113,19 +191,16 @@
       <div class="team-card">
         <img src="images/delilah_photo.png" alt="delilah's photo" class="headshot">
         <div class="card-content">
-          <h3>Delilah</h3>
+          <h3>Dalilah Guerra</h3>
           <p>Marketing Director</p>
         </div>
         <div class="bio-overlay">
-          <p class="bio">This is a brief bio about the officer.</p>
+          <p class="bio">I’m a Digital Media Innovation student with a minor in Innovation and Entrepreneurship. Currently, I manage the LinkedIn and Instagram accounts for ACM AI, where I educate people interested in learning about AI and its impact on our daily lives through media outreach.</p>
           <div class="about-icons">
-            <a href="https://discord.gg/VY4sy2Y7Vm" target="_blank">
+            <a href="https://www.linkedin.com/in/dalilah-guerra-b15708285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
               <img src="images/linkedin_icon.svg" alt="linkedin link icon" height="30" width="30" />
             </a>
-            <a href="https://github.com" target="_blank">
-              <img src="images/github_icon.svg" alt="github link icon" height="30" width="30"/>
-            </a>
-            <a href="mailto:mojavelighthouse@gmail.com" target="_blank">
+            <a href="mailto:guerradalilah@gmail.com" target="_blank">
               <img src="images/email_icon.svg" alt="email link icon" height="30" width="30"/>
             </a>
           </div>
@@ -146,15 +221,18 @@
       <a href="https://www.instagram.com/acm.txst/" target="_blank">
         <img src="images/instagram_icon.svg" alt="instagram link icon" height="50" width="50"/>
       </a>
-      <a href="mailto:mojavelighthouse@gmail.com" target="_blank">
+      <a href="mailto:acmaitxstate@gmail.com" target="_blank">
         <img src="images/email_icon.svg" alt="email link icon" height="50" width="50"/>
       </a>
+      <!--
       <a href="https://drive.google.com" target="_blank">
         <img src="images/drive_icon.svg" alt="google drive link icon" height="50" width="50"/>
       </a>
+    -->
     </div>  
   </footer>
 
   <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js"></script>
 </body>
 </html>

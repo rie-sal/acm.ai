@@ -1,6 +1,19 @@
 {
+  "name": "acm-ai-txst",
+  "version": "1.0.0",
+  "description": "A website for the ACM AI Club at Texas State University.",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server",
+    "build": "echo 'No build process defined'"
+  },
   "dependencies": {
     "node-cron": "^3.0.3",
     "sqlite3": "^5.1.7"
-  }
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  },
+  "author": "Gabriele Saldaña",
+  "license": "ISC"
 }

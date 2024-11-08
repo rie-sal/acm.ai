@@ -40,7 +40,7 @@ header {
   -webkit-backdrop-filter: blur(30px);
 }
 
-.header-container {
+/* .header-container {
   width: 15%;
   display: flex;
   justify-content: center;
@@ -48,6 +48,31 @@ header {
   margin-left: auto;
   padding-right: 50px;
   padding-top: 50px; 
+} */
+
+.header-container {
+  width: auto; /* Fit content width instead of fixed width */
+  display: flex;
+  justify-content: left;
+  align-items: center; /* Align all parts vertically centered */
+  padding: 0 50px;
+  gap: 15px; /* Add spacing between items for better visual separation */
+}
+
+.centered-text {
+  position: absolute;
+  top: 40%;
+  left: 32%;
+  transform: translate(-50%, -50%);
+  text-align: center; /* Optional: centers text lines within the group */
+}
+
+.centered-text-secondary{
+  position: absolute;
+  /* top: 85%;
+  left: 48%; */ 
+  transform: translate(45%, -75%);
+  text-align: center;
 }
 
 nav {
@@ -141,7 +166,7 @@ section {
 landingtext {
   letter-spacing: 3pt;
   font-size: 50pt;
-  display: flex;
+  display: inline-flex;
 
   align-items: center;
   padding-left: 10px;

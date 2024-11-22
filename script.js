@@ -119,52 +119,47 @@ generateCalendar(today.getMonth(), today.getFullYear());
 
 async function getMessages() {
   try {
-      // Define the API endpoint and spreadsheet details
-      const sheetId = '1tWv937PlgSXhMgkpQQYb-U9NJl4X73Pnzl7PyNbLREQ'; // Replace with your actual Google Sheet ID
-      const range = 'Sheet1!A:E'; // Adjust the range based on your sheet (columns A to E)
-      
-      // Build the URL for the Google Sheets API request
-      const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=AIzaSyCue1NQWTFKdp6Gm8wjLwIP9BurAFoHN5Y`; // Replace 'YOUR_API_KEY' with your actual API key
+      const sheetId = '1tWv937PlgSXhMgkpQQYb-U9NJl4X73Pnzl7PyNbLREQ';
+      const range = 'Sheet1!A:E';
+      const apiKey = 'AIzaSyCue1NQWTFKdp6Gm8wjLwIP9BurAFoHN5Y'; 
+      const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
-      // Fetch the data from Google Sheets
       const response = await fetch(apiUrl);
-      
-      // Check if the response is ok (status code 200-299)
       if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
       const data = await response.json();
-      const rows = data.values; // Data from the Google Sheets API
-
-      // Clear the messages display areas
+      const rows = data.values || [];
       const messagesContainer = document.getElementById('messagesContainer');
-      messagesContainer.innerHTML = ''; // Clear previous messages
+      messagesContainer.innerHTML = '';
 
-      // Loop through the rows and create message cards
-      rows.forEach(row => {
-          // Assuming the columns are: messageContent, messageSender, messageSendTime, messageSendDate, senderIcon
-          const [messageContent, messageSender, messageSendTime, messageSendDate, senderIcon] = row;
+      if (rows.length <= 1) {
+          messagesContainer.innerHTML = `<p>No messages available.</p>`;
+          return;
+      }
 
-          // Format the timestamp by combining send time and send date (if necessary)
-          const timestamp = new Date(`${messageSendDate} ${messageSendTime}`);
+      rows.slice(1).forEach(row => {
+          const [messageContent = 'No content', messageSender = 'Anonymous', messageSendTime = '', messageSendDate = '', senderIcon = 'default-icon.png'] = row;
+          const timestamp = messageSendDate && messageSendTime 
+              ? new Date(`${messageSendDate} ${messageSendTime}`).toLocaleString() 
+              : 'Invalid date/time';
 
-          // Create the message card
-          const messageCard = document.createElement('div');
-          messageCard.classList.add('message-card'); // Add a class for styling
+          const messageRow = document.createElement('div');
+          messageRow.classList.add('message-row');
 
-          // Add content to the card
-          messageCard.innerHTML = `
+          messageRow.innerHTML = `
               <div class="sender-icon">
                   <img src="${senderIcon}" alt="${messageSender}'s Icon" />
               </div>
-              <div class="message-content">
+              <div class="message-details">
                   <h3>${messageSender}</h3>
+                  <small>${timestamp}</small>
                   <p>${messageContent}</p>
-                  <small>${timestamp.toLocaleString()}</small>
               </div>
           `;
-          messagesContainer.appendChild(messageCard);
+
+          messagesContainer.appendChild(messageRow);
       });
   } catch (error) {
       console.error('Error fetching messages from Google Sheets:', error);

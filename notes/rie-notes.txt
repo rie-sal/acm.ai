@@ -8,19 +8,27 @@ to-do (later versions):
 	- route discord bot to email
 	- join our mailing list 
 	- download the calendar
-
-
-
-
-
-
-deadline: today... final to-do items: 
-	- format parsed messages from spreadsheet into cards on frontend
-	- add visual indicators to calendar 
-	- use calendar api to pull events from calendar on each page load ?
-		- or... pull events every time a new one is added? how
 	- mobile adaptation
-	- add officer info
+
+
+final to-do items: 
+	landing page:
+	- improve look of landing page (20m)
+	- resize text to fit into the animated shape regardless of screen size
+
+	announcements:
+	- format parsed messages from spreadsheet into scrollable interface on frontend (45m)
+		- the scrollable interface should fit nicely into a single screen
+		- format sender-profile-pic to be a circle, and small
+	
+	calendar:
+	- include all calendar event fields within popups (10m)
+	- add circle highlight indicator on calendar dates when selected (10m)
+	- fix calendar parsing bug that causes the dates to not line up with weekdays (30m)
+
+	officer section:
+	- change color of cards to match calendar card in dark mode (10m)
+	- center title text in remaining card space
 
 
 

@@ -4,6 +4,7 @@
   });
 }); */ 
 
+
 window.onload = function() {
   getMessages();
 };

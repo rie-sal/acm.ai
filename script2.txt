@@ -1,3 +1,5 @@
+
+
 window.onload = function() {
   getMessages();
 };
@@ -14,23 +16,41 @@ const calendarGrid = document.querySelector('.calendar-grid');
 const eventList = document.getElementById('event-list');
 const monthYearDisplay = document.getElementById('month-year');
 
+/* Public calendar ID and API key
 const calendarId = 'bea3c558d615d9630b391ba92fabb971797e17114d92bbd6330111ebf1d8c8d8@group.calendar.google.com'; // Replace with your public Google Calendar ID
-const apiKey = 'AIzaSyCue1NQWTFKdp6Gm8wjLwIP9BurAFoHN5Y';
+const apiKey = 'YOUR_API_KEY'; // Replace with your Google Calendar API key
 
 // Construct URL to fetch public events from the calendar
+// https://calendar.google.com/calendar/embed?src=bea3c558d615d9630b391ba92fabb971797e17114d92bbd6330111ebf1d8c8d8%40group.calendar.google.com&ctz=America%2FChicago
 const googleCalendarUrl = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${apiKey}`;
 
 fetch(googleCalendarUrl)
   .then(response => response.json())
   .then(data => parseGoogleCalendarEvents(data))
-  .catch(error => console.error('Error fetching Google Calendar events:', error));
+  .catch(error => console.error('Error fetching Google Calendar events:', error)); */
+
+  fetch('https://calendar.google.com/calendar/ical/bea3c558d615d9630b391ba92fabb971797e17114d92bbd6330111ebf1d8c8d8%40group.calendar.google.com/public/basic.ics')
+  .then(response => response.text())
+  .then(icsData => {
+    const jcalData = ICAL.parse(icsData); // Use a library like ICAL.js to parse the .ics data
+    const comp = new ICAL.Component(jcalData);
+    const vevents = comp.getAllSubcomponents('vevent');
+    
+    vevents.forEach(event => {
+      const eventDetails = new ICAL.Event(event);
+      console.log(eventDetails.summary); // Event title
+      console.log(eventDetails.startDate.toJSDate()); // Start date and time
+    });
+  })
+  .catch(error => console.error('Error fetching .ics file:', error));
 
 // Parse Google Calendar events into your events array
 function parseGoogleCalendarEvents(data) {
   events.length = 0; // Clear the global array
 
   data.items.forEach(item => {
-    const startDate = new Date(item.start.dateTime || item.start.date);
+    // Google Calendar API items typically contain "start" and "end" timestamps
+    const startDate = new Date(item.start.dateTime || item.start.date); // Handle all-day events
     const endDate = new Date(item.end.dateTime || item.end.date);
 
     events.push({
@@ -42,16 +62,20 @@ function parseGoogleCalendarEvents(data) {
   });
 
   console.log(events); // Array of event objects
-  populateCalendar(events); // Now this function will work
-}
-
-// Populate the calendar grid with events
-function populateCalendar(events) {
-  const today = new Date();
-  generateCalendar(today.getMonth(), today.getFullYear());
+  populateCalendar(events);
 }
 
 // Check if a specific day has any event
+function hasEventForDate(day, month, year) {
+  return events.some(event => {
+    const eventDate = event.startDate;
+    return eventDate.getDate() === day &&
+           eventDate.getMonth() === month &&
+           eventDate.getFullYear() === year;
+  });
+}
+
+// Get all events for a specific day
 function getEventsForDay(day, month, year) {
   return events.filter(event => {
     const eventDate = event.startDate;
@@ -63,16 +87,20 @@ function getEventsForDay(day, month, year) {
 
 // Generate the calendar for the specified month and year
 function generateCalendar(month, year) {
+  // Set the month and year in the header
   monthYearDisplay.textContent = `${getMonthName(month)} ${year}`;
 
+  // Clear any existing cells
   calendarGrid.innerHTML = '';
 
+  // Generate the days for the current month
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   for (let day = 1; day <= daysInMonth; day++) {
     const dayCell = document.createElement('div');
     dayCell.classList.add('day-cell');
     dayCell.textContent = day;
 
+    // Check if this day has an event and add a dot
     const hasEvent = events.some(event => 
       event.startDate.getDate() === day &&
       event.startDate.getMonth() === month &&
@@ -91,14 +119,15 @@ function generateCalendar(month, year) {
 
 // Show events for the selected day
 function showDayEvents(day, month, year) {
-  eventList.innerHTML = '';
+  eventList.innerHTML = ''; // Clear previous events
 
+  // Get the events for the selected day
   const dayEvents = getEventsForDay(day, month, year);
   
   dayEvents.forEach(event => {
     const eventCard = document.createElement('div');
     eventCard.classList.add('event-card');
-    eventCard.textContent = event.title;
+    eventCard.textContent = event.title; // Add your event details here
     eventList.appendChild(eventCard);
   });
 }

@@ -1,0 +1,215 @@
+
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const PORT = 3000;
+const cors = require('cors');
+const sqlite3 = require('sqlite3').verbose();
+const cron = require('node-cron');
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// Create or open the SQLite database
+const db = new sqlite3.Database('./messages.db', (err) => {
+    if (err) {
+        console.error('Error opening SQLite database:', err.message);
+    } else {
+        console.log('Connected to SQLite database.');
+        db.run(`CREATE TABLE IF NOT EXISTS messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT,
+            content TEXT,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+        )`);
+
+        // Call the function to delete old messages when the server starts
+        deleteOldMessages();
+    }
+});
+
+// POST route to receive and store messages in SQLite
+app.post('/api/messages', (req, res) => {
+    const { username, content } = req.body;
+    
+    if (!username || !content) {
+        return res.status(400).json({ error: 'Invalid input data' });
+    }
+
+    const query = `INSERT INTO messages (username, content) VALUES (?, ?)`;
+    db.run(query, [username, content], function(err) {
+        if (err) {
+            console.error('Error inserting message into database:', err.message);
+            res.status(500).json({ success: false, message: 'Error saving message' });
+        } else {
+            console.log(`Message saved: ${username}: ${content}`);
+            res.status(200).json({ success: true, message: 'Message saved' });
+        }
+    });
+});
+
+// GET route to retrieve messages from SQLite
+app.get('/api/messages', (req, res) => {
+    const query = `SELECT username, content, timestamp FROM messages ORDER BY timestamp DESC`;
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            console.error('Error retrieving messages from database:', err.message);
+            res.status(500).json({ error: 'Error retrieving messages' });
+        } else {
+            res.json(rows);
+        }
+    });
+});
+
+// Function to delete messages older than 31 days
+function deleteOldMessages() {
+    const deleteQuery = `DELETE FROM messages WHERE timestamp <= datetime('now', '-31 days')`;
+    db.run(deleteQuery, [], function(err) {
+        if (err) {
+            console.error('Error deleting old messages:', err.message);
+        } else {
+            console.log('Old messages deleted.');
+        }
+    });
+}
+
+// Start the server and set up the delete task
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+
+    // Schedule the deleteOldMessages function to run every day at midnight
+    cron.schedule('0 0 * * *', () => {
+        console.log('Running scheduled task to delete old messages');
+        deleteOldMessages();
+    });
+});
+
+
+const fs = require('node:fs');
+const path = require('node:path');
+const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const fetch = require('node-fetch'); // Ensure you have this line to import fetch if you haven't already
+const { token, roleId, channelId } = require('./config.json');
+
+const client = new Client({ 
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
+});
+
+client.commands = new Collection();
+const foldersPath = path.join(__dirname, 'commands');
+const commandFolders = fs.readdirSync(foldersPath);
+
+for (const folder of commandFolders) {
+    const commandsPath = path.join(foldersPath, folder);
+    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+    for (const file of commandFiles) {
+        const filePath = path.join(commandsPath, file);
+        const command = require(filePath);
+        if ('data' in command && 'execute' in command) {
+            client.commands.set(command.data.name, command);
+        } else {
+            console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+        }
+    }
+}
+
+client.once(Events.ClientReady, readyClient => {
+    console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+});
+
+client.on(Events.InteractionCreate, async interaction => {
+    if (!interaction.isChatInputCommand()) return;
+
+    console.log(interaction);
+    const command = interaction.client.commands.get(interaction.commandName);
+
+    if (!command) {
+        console.error(`No command matching ${interaction.commandName} was found.`);
+        return;
+    }
+
+    try {
+        await command.execute(interaction);
+    } catch (error) {
+        console.error(error);
+        if (interaction.replied || interaction.deferred) {
+            await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+        } else {
+            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+        }
+    }
+});
+
+client.on('messageCreate', async (message) => {
+    if (message.channel.id === channelId && message.member.roles.cache.has(roleId)) {
+        await message.react('🪼');
+        console.log(`Message from ${message.author.username}: ${message.content}`);
+        
+        const formattedMessage = {
+            username: message.author.username,
+            content: message.content,
+            timestamp: message.createdTimestamp,
+        };
+
+        // Send it to backend API endpoint
+        await sendMessageToServer(formattedMessage);
+    }
+}); 
+
+// Send message to server
+async function sendMessageToServer(message) {
+    try {
+        const response = await fetch('http://localhost:3000/api/messages', { // server URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(message),
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log('Message sent to server:', data);
+    } catch (error) {
+        console.error('Error sending message to server:', error);
+    }
+}
+
+// Open or create a database
+const request = indexedDB.open('MyDatabase', 1); 
+
+request.onupgradeneeded = (event) => {
+    const db = event.target.result;
+    // Create an object store (like a table in SQL) if it doesn't exist
+    const objectStore = db.createObjectStore('messages', { keyPath: 'id' });
+    console.log('Database setup complete');
+};
+
+request.onsuccess = (event) => {
+    const db = event.target.result;
+    console.log('Database opened successfully');
+
+    // Add data to the object store
+    const transaction = db.transaction('messages', 'readwrite');
+    const objectStore = transaction.objectStore('messages');
+    objectStore.add({ id: 1, username: 'Alice', content: 'Hello World!', timestamp: Date.now() });
+    
+    transaction.oncomplete = () => {
+        console.log('Data added to IndexedDB');
+    };
+};
+
+request.onerror = (event) => {
+    console.error('Error opening database:', event.target.errorCode);
+};
+
+client.login(token);
+
+// Fetch messages when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  getMessages(); // Fetch messages on page load
+});

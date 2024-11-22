@@ -2,19 +2,40 @@
 calendar inspo
 	https://mir-s3-cdn-cf.behance.net/project_modules/disp/76bf6320971529.562f42e122a50.png
 
-to-do:
-	- mobile adaptation
-	- add officer info
+to-do (later versions):
 	- add social links
 	- add past officer pages
 	- route discord bot to email
-	- detect discord bot dates to add to calendar
-	- 
-
-
-	- adapt heading to screen size (text)
-	- make officer card content fit the cards nicely
-	- 
-
 	- join our mailing list 
 	- download the calendar
+
+
+
+
+
+
+deadline: today... final to-do items: 
+	- format parsed messages from spreadsheet into cards on frontend
+	- add visual indicators to calendar 
+	- use calendar api to pull events from calendar on each page load ?
+		- or... pull events every time a new one is added? how
+	- mobile adaptation
+	- add officer info
+
+
+
+	Don’t worry about a mission statement. 
+	Some ideas that would fit in an about section:
+
+The place for all things AI on campus
+Benefits:
+Connect with the AI scene in Austin
+Learn how to use AI tools
+Practical workshops every week
+Industry speakers
+
+
+Also cofounder on Zach, Ehsan, Ben, Francisco, and Gabriel’s 
+once you make them for “previous officers”. Please let me know again 
+what you need from each of them and I will be sure to get that for you 
+ASAP.

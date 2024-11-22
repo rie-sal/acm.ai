@@ -1,3 +1,5 @@
+// script.js
+
 window.onload = function() {
   getMessages();
 };

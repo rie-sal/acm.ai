@@ -116,36 +116,57 @@ function getMonthName(monthIndex) {
 const today = new Date();
 generateCalendar(today.getMonth(), today.getFullYear());
 
+
 async function getMessages() {
   try {
-      const response = await fetch('http://localhost:3000/api/messages');
+      // Define the API endpoint and spreadsheet details
+      const sheetId = '1tWv937PlgSXhMgkpQQYb-U9NJl4X73Pnzl7PyNbLREQ'; // Replace with your actual Google Sheet ID
+      const range = 'Sheet1!A:E'; // Adjust the range based on your sheet (columns A to E)
+      
+      // Build the URL for the Google Sheets API request
+      const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=AIzaSyCue1NQWTFKdp6Gm8wjLwIP9BurAFoHN5Y`; // Replace 'YOUR_API_KEY' with your actual API key
+
+      // Fetch the data from Google Sheets
+      const response = await fetch(apiUrl);
       
       // Check if the response is ok (status code 200-299)
       if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const messages = await response.json();
+      const data = await response.json();
+      const rows = data.values; // Data from the Google Sheets API
 
       // Clear the messages display areas
       const messagesContainer = document.getElementById('messagesContainer');
       messagesContainer.innerHTML = ''; // Clear previous messages
-      
-      // Update the messagesContainer with formatted cards
-      messages.forEach(message => {
-          // For messagesContainer (as formatted cards)
+
+      // Loop through the rows and create message cards
+      rows.forEach(row => {
+          // Assuming the columns are: messageContent, messageSender, messageSendTime, messageSendDate, senderIcon
+          const [messageContent, messageSender, messageSendTime, messageSendDate, senderIcon] = row;
+
+          // Format the timestamp by combining send time and send date (if necessary)
+          const timestamp = new Date(`${messageSendDate} ${messageSendTime}`);
+
+          // Create the message card
           const messageCard = document.createElement('div');
           messageCard.classList.add('message-card'); // Add a class for styling
 
           // Add content to the card
           messageCard.innerHTML = `
-              <h3>${message.username}</h3>
-              <p>${message.content}</p>
-              <small>${new Date(message.timestamp).toLocaleString()}</small>
+              <div class="sender-icon">
+                  <img src="${senderIcon}" alt="${messageSender}'s Icon" />
+              </div>
+              <div class="message-content">
+                  <h3>${messageSender}</h3>
+                  <p>${messageContent}</p>
+                  <small>${timestamp.toLocaleString()}</small>
+              </div>
           `;
           messagesContainer.appendChild(messageCard);
       });
   } catch (error) {
-      console.error('Error fetching messages from backend:', error);
+      console.error('Error fetching messages from Google Sheets:', error);
   }
 }

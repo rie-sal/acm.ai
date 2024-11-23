@@ -17,10 +17,10 @@ const eventList = document.getElementById('event-list');
 const monthYearDisplay = document.getElementById('month-year');
 
 const calendarId = 'bea3c558d615d9630b391ba92fabb971797e17114d92bbd6330111ebf1d8c8d8@group.calendar.google.com'; // Replace with your public Google Calendar ID
-const apiKey = 'AIzaSyCue1NQWTFKdp6Gm8wjLwIP9BurAFoHN5Y';
+const x = 'AIzaSyCue1NQWTFKdp6Gm8wjLwIP9BurAFoHN5Y';
 
 // Construct URL to fetch public events from the calendar
-const googleCalendarUrl = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${apiKey}`;
+const googleCalendarUrl = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${x}`;
 
 fetch(googleCalendarUrl)
   .then(response => response.json())
@@ -124,8 +124,8 @@ function showDayEvents(day, month, year) {
           <h3>${event.title || 'Untitled Event'}</h3>
           <p><strong>Date:</strong> ${startDateTime} - ${endDateTime}</p>
           <p><strong>Location:</strong> ${event.location || 'No location provided'}</p>
-          <p><strong>Description:</strong> ${event.description || 'No description available'}</p>
       `;
+      // <p><strong>Description:</strong> ${event.description || 'No description available'}</p> 
 
       // Append the event card to the event list container
       eventList.appendChild(eventCard);
@@ -150,8 +150,8 @@ async function getMessages() {
   try {
       const sheetId = '1tWv937PlgSXhMgkpQQYb-U9NJl4X73Pnzl7PyNbLREQ';
       const range = 'Sheet1!A:E';
-      const apiKey = 'AIzaSyCue1NQWTFKdp6Gm8wjLwIP9BurAFoHN5Y'; 
-      const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+      const x = 'AIzaSyCue1NQWTFKdp6Gm8wjLwIP9BurAFoHN5Y'; 
+      const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${x}`;
 
       const response = await fetch(apiUrl);
       if (!response.ok) {

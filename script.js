@@ -110,25 +110,54 @@ function showDayEvents(day, month, year) {
   // Get events for the specified day
   const dayEvents = getEventsForDay(day, month, year);
 
+  // Function to format date
+  function formatDateTime(date) {
+    // Get the weekday, month, and day separately
+    const weekday = date.toLocaleDateString(undefined, { weekday: 'long' });
+    const month = date.toLocaleDateString(undefined, { month: 'long' });
+    const day = date.getDate(); // Use getDate() to get the numeric day
+  
+    // Add the ordinal suffix to the day
+    const dayWithSuffix = day + getOrdinalSuffix(day);
+  
+    // Format the time
+    const timeOptions = { hour: 'numeric', minute: '2-digit', hour12: true };
+    const formattedTime = date.toLocaleTimeString(undefined, timeOptions);
+  
+    // Combine parts into the desired format
+    return `${weekday}, ${month} ${dayWithSuffix} at ${formattedTime}`;
+  }
+  
+  // Function to get ordinal suffix
+  function getOrdinalSuffix(day) {
+    if (day > 3 && day < 21) return 'th'; // Covers 11th to 19th
+    switch (day % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+      default: return 'th';
+    }
+  }
+
   // Loop through the events and create a card for each
   dayEvents.forEach(event => {
-      const eventCard = document.createElement('div');
-      eventCard.classList.add('event-card');
+    const eventCard = document.createElement('div');
+    eventCard.classList.add('event-card');
 
-      // Extract date and time
-      const startDateTime = event.startDate.toLocaleString();
-      const endDateTime = event.endDate.toLocaleString();
-      
-      // Add content for each field
-      eventCard.innerHTML = `
-          <h3>${event.title || 'Untitled Event'}</h3>
-          <p><strong>Date:</strong> ${startDateTime} - ${endDateTime}</p>
-          <p><strong>Location:</strong> ${event.location || 'No location provided'}</p>
-      `;
-      // <p><strong>Description:</strong> ${event.description || 'No description available'}</p> 
+    // Extract and format date and time
+    const startDateTime = formatDateTime(new Date(event.startDate));
+    const endDateTime = formatDateTime(new Date(event.endDate));
+    
+    // Add content for each field
+    eventCard.innerHTML = `
+      <h3>${event.title || 'Untitled Event'}</h3>
+      <p>${startDateTime}</p>
+      <p><strong>Location:</strong> ${event.location || 'No location provided'}</p>
+    `;
+    // <p><strong>Description:</strong> ${event.description || 'No description available'}</p> 
 
-      // Append the event card to the event list container
-      eventList.appendChild(eventCard);
+    // Append the event card to the event list container
+    eventList.appendChild(eventCard);
   });
 }
 

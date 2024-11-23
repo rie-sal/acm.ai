@@ -16,12 +16,12 @@ final to-do items:
 	* FORMATTING FOR DISCORD MESSAGES (ie # * stuff)
 
 	landing page:
-	- improve look of landing page (20m)
 	- resize text to fit into the animated shape regardless of screen size
 	
 	calendar:
 	- add circle highlight indicator on calendar dates when selected (10m)
 	- make clicking the events button on header center all the content vertically not just the calendar
+	the card and its content are not working well together at all. 
 
 	officer section:
 	- change color of cards to match calendar card in dark mode (10m)

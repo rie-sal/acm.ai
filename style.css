@@ -74,7 +74,7 @@ header {
   position: absolute;
   /* top: 85%;
   left: 48%; */ 
-  transform: translate(45%, -75%);
+  transform: translate(80%, -105%);
   text-align: center;
 }
 
@@ -168,12 +168,12 @@ section {
 
 landingtext {
   letter-spacing: 3pt;
-  font-size: 50pt;
+  font-size: 6.5rem;
   display: inline-flex;
 
   align-items: center;
   padding-left: 10px;
-  padding-top: 50px;
+  padding-top: 0px;
   background: linear-gradient(to left, #8D54FF, #42BFCB);
   -webkit-background-clip: text;
   background-clip: text;
@@ -181,6 +181,7 @@ landingtext {
   color: transparent;
   text-decoration: none;
   font-weight: bold;
+  z-index: -1;
 }
 
 h1 {
@@ -235,6 +236,7 @@ h2 {
   text-align: center;
   font-size: 34pt;
   z-index: 10;
+  margin-bottom: 20px;
 }
 
 
@@ -274,6 +276,7 @@ h2 {
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.1);
+  margin-top: 0;
 }
 .messages-container {
   padding: 1rem;
@@ -326,10 +329,11 @@ h2 {
   border-radius: 15px;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  margin: 20px;
+  /* margin: 0px; */
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  margin-bottom: 0;
 }
 
 .calendar-header {
@@ -371,17 +375,24 @@ h2 {
 }
 
 .event-list {
-  margin-top: 20px;
+  margin-top: 0px;
   max-height: 300px;
   overflow-y: auto;
+  display: auto;
 }
 
 .event-card {
+  width: 100%;
+  max-width: 400px;
+  max-height: 100px;
   background: rgba(255, 255, 255, 0.1);
-  margin-bottom: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+  
 }
 
 #team {

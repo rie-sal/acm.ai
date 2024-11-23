@@ -6,7 +6,7 @@ window.onload = function() {
 
 const toggleButton = document.getElementById('toggle-theme');
 toggleButton.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode'); // Toggle dark mode class on body
+  document.body.classList.toggle('dark-mode'); // Toggle dark mode class on body 
   toggleButton.classList.toggle('active'); // Add/remove active class for animation
   console.log(toggleButton.classList); // Check classes in the console
 });
@@ -36,11 +36,12 @@ function parseGoogleCalendarEvents(data) {
     const endDate = new Date(item.end.dateTime || item.end.date);
 
     events.push({
-      title: item.summary,
-      description: item.description,
+      title: item.summary || 'Untitled Event',
+      description: item.description || 'No description available',
       startDate: startDate,
       endDate: endDate,
-    });
+      location: item.location || 'No location provided', // Safeguard for missing location
+  });
   });
 
   console.log(events); // Array of event objects
@@ -66,15 +67,26 @@ function getEventsForDay(day, month, year) {
 // Generate the calendar for the specified month and year
 function generateCalendar(month, year) {
   monthYearDisplay.textContent = `${getMonthName(month)} ${year}`;
-
+  
   calendarGrid.innerHTML = '';
-
+  
+  // Determine the first day of the month and number of days in the month
+  const firstDayOfWeek = new Date(year, month, 1).getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
   const daysInMonth = new Date(year, month + 1, 0).getDate();
+  
+  // Add blank cells for days before the first day of the month
+  for (let i = 0; i < firstDayOfWeek; i++) {
+    const blankCell = document.createElement('div');
+    blankCell.classList.add('day-cell', 'blank-cell');
+    calendarGrid.appendChild(blankCell);
+  }
+  
+  // Add cells for each day of the month
   for (let day = 1; day <= daysInMonth; day++) {
     const dayCell = document.createElement('div');
     dayCell.classList.add('day-cell');
     dayCell.textContent = day;
-
+    
     const hasEvent = events.some(event => 
       event.startDate.getDate() === day &&
       event.startDate.getMonth() === month &&
@@ -85,7 +97,7 @@ function generateCalendar(month, year) {
       dot.classList.add('dot');
       dayCell.appendChild(dot);
     }
-
+    
     dayCell.addEventListener('click', () => showDayEvents(day, month, year));
     calendarGrid.appendChild(dayCell);
   }
@@ -93,15 +105,30 @@ function generateCalendar(month, year) {
 
 // Show events for the selected day
 function showDayEvents(day, month, year) {
-  eventList.innerHTML = '';
+  eventList.innerHTML = ''; // Clear the event list
 
+  // Get events for the specified day
   const dayEvents = getEventsForDay(day, month, year);
-  
+
+  // Loop through the events and create a card for each
   dayEvents.forEach(event => {
-    const eventCard = document.createElement('div');
-    eventCard.classList.add('event-card');
-    eventCard.textContent = event.title;
-    eventList.appendChild(eventCard);
+      const eventCard = document.createElement('div');
+      eventCard.classList.add('event-card');
+
+      // Extract date and time
+      const startDateTime = event.startDate.toLocaleString();
+      const endDateTime = event.endDate.toLocaleString();
+      
+      // Add content for each field
+      eventCard.innerHTML = `
+          <h3>${event.title || 'Untitled Event'}</h3>
+          <p><strong>Date:</strong> ${startDateTime} - ${endDateTime}</p>
+          <p><strong>Location:</strong> ${event.location || 'No location provided'}</p>
+          <p><strong>Description:</strong> ${event.description || 'No description available'}</p>
+      `;
+
+      // Append the event card to the event list container
+      eventList.appendChild(eventCard);
   });
 }
 

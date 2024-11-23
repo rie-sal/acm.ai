@@ -12,14 +12,15 @@ to-do (later versions):
 
 
 final to-do items: 
+
+	* FORMATTING FOR DISCORD MESSAGES (ie # * stuff)
+
 	landing page:
 	- improve look of landing page (20m)
 	- resize text to fit into the animated shape regardless of screen size
 	
 	calendar:
-	- include all calendar event fields within popups (10m)
 	- add circle highlight indicator on calendar dates when selected (10m)
-	- fix calendar parsing bug that causes the dates to not line up with weekdays (30m)
 	- make clicking the events button on header center all the content vertically not just the calendar
 
 	officer section:
@@ -28,10 +29,7 @@ final to-do items:
 
 
 
-	Don’t worry about a mission statement. 
-	Some ideas that would fit in an about section:
 
-The place for all things AI on campus
 Benefits:
 Connect with the AI scene in Austin
 Learn how to use AI tools

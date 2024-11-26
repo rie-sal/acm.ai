@@ -16,7 +16,7 @@ const calendarGrid = document.querySelector('.calendar-grid');
 const eventList = document.getElementById('event-list');
 const monthYearDisplay = document.getElementById('month-year');
 
-const calendarId = 'bea3c558d615d9630b391ba92fabb971797e17114d92bbd6330111ebf1d8c8d8@group.calendar.google.com'; // Replace with your public Google Calendar ID
+const calendarId = 'bea3c558d615d9630b391ba92fabb971797e17114d92bbd6330111ebf1d8c8d8@group.calendar.google.com'; // Replace with public Google Calendar ID
 const x = 'AIzaSyCue1NQWTFKdp6Gm8wjLwIP9BurAFoHN5Y';
 
 // Construct URL to fetch public events from the calendar

@@ -179,7 +179,7 @@ async function getMessages() {
   try {
       const sheetId = '1tWv937PlgSXhMgkpQQYb-U9NJl4X73Pnzl7PyNbLREQ';
       const range = 'Sheet1!A:E';
-      const x = 'AIzaSyCue1NQWTFKdp6Gm8wjLwIP9BurAFoHN5Y'; 
+      const x = 'AIzaSyCue1NQWTFKdp6Gm8wjLwIP9BurAFoHN5Y';
       const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${x}`;
 
       const response = await fetch(apiUrl);
@@ -203,6 +203,9 @@ async function getMessages() {
               ? new Date(`${messageSendDate} ${messageSendTime}`).toLocaleString() 
               : 'Invalid date/time';
 
+          // Parse the messageContent as Markdown
+          const formattedContent = marked.parse(messageContent);
+
           const messageRow = document.createElement('div');
           messageRow.classList.add('message-row');
 
@@ -213,7 +216,9 @@ async function getMessages() {
               <div class="message-details">
                   <h3>${messageSender}</h3>
                   <small>${timestamp}</small>
-                  <p>${messageContent}</p>
+                  <div class="markdown-container">
+                  <div class="message-content">${formattedContent}</div>
+                  </div>
               </div>
           `;
 
